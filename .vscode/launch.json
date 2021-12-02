@@ -1,0 +1,193 @@
+{
+	// Use IntelliSense to learn about possible attributes.
+	// Hover to view descriptions of existing attributes.
+	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"type": "lldb",
+			"request": "launch",
+			"name": "Debug executable 'day_1_sonar_sweep'",
+			"cargo": {
+				"args": [
+					"build",
+					"--bin=day_1_sonar_sweep",
+					"--package=advent_of_code_2021"
+				],
+				"filter": {
+					"name": "day_1_sonar_sweep",
+					"kind": "bin"
+				}
+			},
+			"args": [],
+			"cwd": "${workspaceFolder}"
+		},
+		{
+			"type": "lldb",
+			"request": "launch",
+			"name": "Debug unit tests in executable 'day_1_sonar_sweep'",
+			"cargo": {
+				"args": [
+					"test",
+					"--no-run",
+					"--bin=day_1_sonar_sweep",
+					"--package=advent_of_code_2021"
+				],
+				"filter": {
+					"name": "day_1_sonar_sweep",
+					"kind": "bin"
+				}
+			},
+			"args": [],
+			"cwd": "${workspaceFolder}"
+		},
+		{
+			"type": "lldb",
+			"request": "launch",
+			"name": "Debug executable 'day_1_sonar_sweep_sliding_window'",
+			"cargo": {
+				"args": [
+					"build",
+					"--bin=day_1_sonar_sweep_sliding_window",
+					"--package=advent_of_code_2021"
+				],
+				"filter": {
+					"name": "day_1_sonar_sweep_sliding_window",
+					"kind": "bin"
+				}
+			},
+			"args": [],
+			"cwd": "${workspaceFolder}"
+		},
+		{
+			"type": "lldb",
+			"request": "launch",
+			"name": "Debug unit tests in executable 'day_1_sonar_sweep_sliding_window'",
+			"cargo": {
+				"args": [
+					"test",
+					"--no-run",
+					"--bin=day_1_sonar_sweep_sliding_window",
+					"--package=advent_of_code_2021"
+				],
+				"filter": {
+					"name": "day_1_sonar_sweep_sliding_window",
+					"kind": "bin"
+				}
+			},
+			"args": [],
+			"cwd": "${workspaceFolder}"
+		},
+		{
+			"type": "lldb",
+			"request": "launch",
+			"name": "Debug executable 'day_2_dive'",
+			"cargo": {
+				"args": [
+					"build",
+					"--bin=day_2_dive",
+					"--package=advent_of_code_2021"
+				],
+				"filter": {
+					"name": "day_2_dive",
+					"kind": "bin"
+				}
+			},
+			"args": [],
+			"cwd": "${workspaceFolder}"
+		},
+		{
+			"type": "lldb",
+			"request": "launch",
+			"name": "Debug unit tests in executable 'day_2_dive'",
+			"cargo": {
+				"args": [
+					"test",
+					"--no-run",
+					"--bin=day_2_dive",
+					"--package=advent_of_code_2021"
+				],
+				"filter": {
+					"name": "day_2_dive",
+					"kind": "bin"
+				}
+			},
+			"args": [],
+			"cwd": "${workspaceFolder}"
+		},
+		{
+			"type": "lldb",
+			"request": "launch",
+			"name": "Debug executable 'day_2_dive_and_aim'",
+			"cargo": {
+				"args": [
+					"build",
+					"--bin=day_2_dive_and_aim",
+					"--package=advent_of_code_2021"
+				],
+				"filter": {
+					"name": "day_2_dive_and_aim",
+					"kind": "bin"
+				}
+			},
+			"args": [],
+			"cwd": "${workspaceFolder}"
+		},
+		{
+			"type": "lldb",
+			"request": "launch",
+			"name": "Debug unit tests in executable 'day_2_dive_and_aim'",
+			"cargo": {
+				"args": [
+					"test",
+					"--no-run",
+					"--bin=day_2_dive_and_aim",
+					"--package=advent_of_code_2021"
+				],
+				"filter": {
+					"name": "day_2_dive_and_aim",
+					"kind": "bin"
+				}
+			},
+			"args": [],
+			"cwd": "${workspaceFolder}"
+		},
+		{
+			"type": "lldb",
+			"request": "launch",
+			"name": "Debug executable 'advent_of_code_2021'",
+			"cargo": {
+				"args": [
+					"build",
+					"--bin=advent_of_code_2021",
+					"--package=advent_of_code_2021"
+				],
+				"filter": {
+					"name": "advent_of_code_2021",
+					"kind": "bin"
+				}
+			},
+			"args": [],
+			"cwd": "${workspaceFolder}"
+		},
+		{
+			"type": "lldb",
+			"request": "launch",
+			"name": "Debug unit tests in executable 'advent_of_code_2021'",
+			"cargo": {
+				"args": [
+					"test",
+					"--no-run",
+					"--bin=advent_of_code_2021",
+					"--package=advent_of_code_2021"
+				],
+				"filter": {
+					"name": "advent_of_code_2021",
+					"kind": "bin"
+				}
+			},
+			"args": [],
+			"cwd": "${workspaceFolder}"
+		}
+	]
+}

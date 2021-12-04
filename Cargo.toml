@@ -20,6 +20,10 @@ name = "day_2_dive_and_aim"
 [[bin]]
 name = "day_3_binary_diagnostic"
 
+[[bin]]
+name = "day_4_giant_squid"
+
+
 
 [dependencies]
 

@@ -23,6 +23,8 @@ name = "day_3_binary_diagnostic"
 [[bin]]
 name = "day_4_giant_squid"
 
+[[bin]]
+name = "day_5_hydrothermal_venture"
 
 
 [dependencies]

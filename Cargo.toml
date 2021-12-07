@@ -29,6 +29,9 @@ name = "day_5_hydrothermal_venture"
 [[bin]]
 name = "day_6_lanternfish"
 
+[[bin]]
+name = "day_7_treachery_of_whales"
+
 
 [dependencies]
 

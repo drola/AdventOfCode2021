@@ -1,3 +1,5 @@
+/// Solution to an Advent of Code problem, day 5, 2021
+/// https://adventofcode.com/2021/day/5
 use std::cmp::max;
 use std::cmp::min;
 use std::env;

@@ -1,3 +1,5 @@
+/// Solution to an Advent of Code problem, day 4, 2021
+/// https://adventofcode.com/2021/day/4
 use std::convert::TryInto;
 use std::env;
 use std::fs;

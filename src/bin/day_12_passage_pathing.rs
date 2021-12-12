@@ -1,3 +1,5 @@
+/// Solution to an Advent of Code problem, day 12, 2021
+/// https://adventofcode.com/2021/day/12
 use std::collections::HashMap;
 use std::collections::HashSet;
 use std::env;

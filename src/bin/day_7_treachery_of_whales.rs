@@ -1,3 +1,5 @@
+/// Solution to an Advent of Code problem, day 7, 2021
+/// https://adventofcode.com/2021/day/7
 use std::env;
 use std::fs;
 

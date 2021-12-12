@@ -1,3 +1,5 @@
+/// Solution to an Advent of Code problem, day 2, 2021
+/// https://adventofcode.com/2021/day/2
 use std::env;
 use std::fs;
 use std::num::ParseIntError;

@@ -14,6 +14,13 @@ if [ -z "$filename" ]; then
     exit 1
 fi
 
-command="cargo run --bin ${filename} -- test_inputs/${filename}.txt"
+test_input_file="test_inputs/${filename}.txt"
+
+if [[ -f "$test_input_file" ]]; then
+    command="cargo run --bin ${filename} -- ${test_input_file}"
+else
+    command="cargo test --bin ${filename}"
+fi
+
 echo $command
 $command

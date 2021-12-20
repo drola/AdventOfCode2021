@@ -6,7 +6,7 @@ use std::env;
 use std::fs;
 
 fn is_small_cave(name: &str) -> bool {
-    name.chars().nth(0).unwrap().is_ascii_lowercase()
+    name.chars().next().unwrap().is_ascii_lowercase()
 }
 
 fn count_paths_from_cave(
@@ -56,18 +56,15 @@ fn main() {
 
     let mut adjacent_caves: HashMap<&str, HashSet<&str>> = HashMap::new();
     for line in lines {
-        match line.split_once('-') {
-            Some((from, to)) => {
-                if !adjacent_caves.contains_key(from) {
-                    adjacent_caves.insert(from, HashSet::new());
-                }
-                if !adjacent_caves.contains_key(to) {
-                    adjacent_caves.insert(to, HashSet::new());
-                }
-                adjacent_caves.get_mut(from).unwrap().insert(to);
-                adjacent_caves.get_mut(to).unwrap().insert(from);
+        if let Some((from, to)) = line.split_once('-') {
+            if !adjacent_caves.contains_key(from) {
+                adjacent_caves.insert(from, HashSet::new());
             }
-            _ => {}
+            if !adjacent_caves.contains_key(to) {
+                adjacent_caves.insert(to, HashSet::new());
+            }
+            adjacent_caves.get_mut(from).unwrap().insert(to);
+            adjacent_caves.get_mut(to).unwrap().insert(from);
         }
     }
 

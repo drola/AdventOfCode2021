@@ -5,6 +5,7 @@ use std::fs;
 
 // https://en.wikipedia.org/wiki/Bracket
 #[derive(Debug, Copy, Clone, PartialEq)]
+#[allow(clippy::enum_variant_names)]
 enum Bracket {
     LeftParenthesis,
     RightParenthesis,
@@ -39,13 +40,10 @@ impl TryFrom<char> for Bracket {
 
 impl Bracket {
     fn is_opening(&self) -> bool {
-        match self {
-            Bracket::LeftParenthesis
+        matches!(self, Bracket::LeftParenthesis
             | Bracket::LeftChevron
             | Bracket::LeftBracket
-            | Bracket::LeftBrace => true,
-            _ => false,
-        }
+            | Bracket::LeftBrace)
     }
 
     fn complement(&self) -> Bracket {
@@ -72,7 +70,7 @@ fn wrong_closing_score(b: Bracket) -> Option<u64> {
     }
 }
 
-fn part_1_syntax_error_score_if_corrupted(line: &Vec<Bracket>) -> Option<u64> {
+fn part_1_syntax_error_score_if_corrupted(line: &[Bracket]) -> Option<u64> {
     let mut stack: Vec<Bracket> = Vec::with_capacity(line.len());
     for &b in line {
         if b.is_opening() {
@@ -84,7 +82,7 @@ fn part_1_syntax_error_score_if_corrupted(line: &Vec<Bracket>) -> Option<u64> {
     None
 }
 
-fn part_2_completion_string_if_incomplete(line: &Vec<Bracket>) -> Option<Vec<Bracket>> {
+fn part_2_completion_string_if_incomplete(line: &[Bracket]) -> Option<Vec<Bracket>> {
     let mut stack: Vec<Bracket> = Vec::with_capacity(line.len());
     for &b in line {
         if b.is_opening() {
@@ -136,18 +134,18 @@ fn main() {
         "Sum of syntax error scores (corrupted lines): {}",
         lines
             .iter()
-            .map(part_1_syntax_error_score_if_corrupted)
-            .filter_map(|x| x)
+            .map(|line| part_1_syntax_error_score_if_corrupted(line))
+            .flatten()
             .sum::<u64>()
     );
 
     let mut scores_for_incomplete_strings = lines
         .iter()
-        .map(part_2_completion_string_if_incomplete)
-        .filter_map(|x| x)
+        .map(|line| part_2_completion_string_if_incomplete(line))
+        .flatten()
         .map(completion_string_score)
         .collect::<Vec<u64>>();
-    scores_for_incomplete_strings.sort();
+    scores_for_incomplete_strings.sort_unstable();
     println!(
         "Middle score of the incomplete strings: {}",
         scores_for_incomplete_strings[scores_for_incomplete_strings.len() / 2]

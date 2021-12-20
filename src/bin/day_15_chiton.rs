@@ -26,11 +26,6 @@ fn enlarge_map(risk_levels: &[Vec<u32>]) -> Vec<Vec<u32>> {
     enlarged_map
 }
 
-fn optimal_path_dijkstra(map: &[Vec<u32>]) -> u32 {
-    0
-    // TODO
-}
-
 fn optimal_path_bellman_ford(map: &[Vec<u32>]) -> u32 {
     let width = map[0].len();
     let height = map.len();

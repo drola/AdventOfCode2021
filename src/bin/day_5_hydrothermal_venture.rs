@@ -16,7 +16,7 @@ impl Line {
     fn from_str(s: &str) -> Self {
         let from_to: [i64; 4] = s
             .replace(" -> ", ",")
-            .split(",")
+            .split(',')
             .map(|s| s.parse::<i64>().unwrap())
             .collect::<Vec<i64>>()
             .try_into()
@@ -30,7 +30,7 @@ impl Line {
         }
     }
 
-    fn into_points(&self) -> Box<dyn std::iter::Iterator<Item = (i64, i64)>> {
+    fn into_points(self) -> Box<dyn std::iter::Iterator<Item = (i64, i64)>> {
         let y_min = min(self.y1, self.y2);
         let y_max = max(self.y1, self.y2);
         let x_min = min(self.x1, self.x2);
@@ -58,7 +58,7 @@ fn main() {
     let args: Vec<String> = env::args().collect();
     let filename = &args[1];
     let contents = fs::read_to_string(filename).expect("Cannot read file");
-    let lines = contents.lines().map(|l| Line::from_str(l));
+    let lines = contents.lines().map(Line::from_str);
 
     let x_max = lines.clone().map(|l| max(l.x1, l.x2)).max().unwrap();
     let y_max = lines.clone().map(|l| max(l.y1, l.y2)).max().unwrap();

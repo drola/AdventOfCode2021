@@ -32,32 +32,32 @@ struct Problem {
 fn parse_pattern(pattern: &str) -> u8 {
     let mut p: u8 = 0;
     if pattern.contains('a') {
-        p = p | 0b10000000;
+        p |= 0b10000000;
     }
     if pattern.contains('b') {
-        p = p | 0b01000000;
+        p |= 0b01000000;
     }
     if pattern.contains('c') {
-        p = p | 0b00100000;
+        p |= 0b00100000;
     }
     if pattern.contains('d') {
-        p = p | 0b00010000;
+        p |= 0b00010000;
     }
     if pattern.contains('e') {
-        p = p | 0b00001000;
+        p |= 0b00001000;
     }
     if pattern.contains('f') {
-        p = p | 0b00000100;
+        p |= 0b00000100;
     }
     if pattern.contains('g') {
-        p = p | 0b00000010;
+        p |= 0b00000010;
     }
 
     p
 }
 
 fn first_with_x_segments(i: &[u8], x: u32) -> u8 {
-    *i.iter().filter(|p| p.count_ones() == x).nth(0).unwrap()
+    *i.iter().find(|p| p.count_ones() == x).unwrap()
 }
 
 fn all_with_x_segments(i: &[u8], x: u32) -> Vec<u8> {
@@ -86,7 +86,7 @@ fn resolve(p: Problem) -> u64 {
     let e = all_with_x_segments(&t, 2)
         .iter()
         .map(|p| p & (!b))
-        .nth(0)
+        .next()
         .unwrap();
     let d = four & (!one) & (!b);
     let _g = horizontal_segments & (!a) & (!d);
@@ -117,12 +117,12 @@ fn resolve(p: Problem) -> u64 {
 
     let mut result: u64 = 0;
 
-    result = result + map[p.result_patterns[0] as usize] as u64 * 1000;
-    result = result + map[p.result_patterns[1] as usize] as u64 * 100;
-    result = result + map[p.result_patterns[2] as usize] as u64 * 10;
-    result = result + map[p.result_patterns[3] as usize] as u64 * 1;
+    result += map[p.result_patterns[0] as usize] as u64 * 1000;
+    result += map[p.result_patterns[1] as usize] as u64 * 100;
+    result += map[p.result_patterns[2] as usize] as u64 * 10;
+    result += map[p.result_patterns[3] as usize] as u64;
 
-    return result;
+    result
 }
 
 fn parse_line(line: &str) -> Problem {
@@ -147,7 +147,7 @@ fn main() {
     let args: Vec<String> = env::args().collect();
     let filename = &args[1];
     let contents = fs::read_to_string(filename).expect("Cannot read file");
-    let problems = contents.lines().map(|v| parse_line(v));
+    let problems = contents.lines().map(parse_line);
 
     let part1: usize = problems
         .clone()

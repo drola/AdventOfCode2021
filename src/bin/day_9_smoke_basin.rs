@@ -4,7 +4,7 @@ use std::env;
 use std::fs;
 
 fn neighbor_coordinates(
-    field: &Vec<Vec<u32>>,
+    field: &[Vec<u32>],
     (x, y): (usize, usize),
 ) -> impl std::iter::Iterator<Item = (usize, usize)> {
     let mut neighbors: Vec<(usize, usize)> = Vec::with_capacity(4);
@@ -69,21 +69,18 @@ fn main() {
     while has_grown {
         has_grown = false;
         for &(x, y) in point_coordinates.iter() {
-            match basins[y][x] {
-                Some(basin_index) => {
-                    neighbor_coordinates(&height_map, (x, y)).for_each(
-                        |(neighbor_x, neighbor_y)| {
-                            if height_map[neighbor_y][neighbor_x] < 9
-                                && basins[neighbor_y][neighbor_x].is_none()
-                            {
-                                basins[neighbor_y][neighbor_x] = Some(basin_index);
-                                has_grown = true;
-                                basin_sizes[basin_index] = basin_sizes[basin_index] + 1;
-                            }
-                        },
-                    );
-                }
-                _ => {}
+            if let Some(basin_index) = basins[y][x] {
+                neighbor_coordinates(&height_map, (x, y)).for_each(
+                    |(neighbor_x, neighbor_y)| {
+                        if height_map[neighbor_y][neighbor_x] < 9
+                            && basins[neighbor_y][neighbor_x].is_none()
+                        {
+                            basins[neighbor_y][neighbor_x] = Some(basin_index);
+                            has_grown = true;
+                            basin_sizes[basin_index] += 1;
+                        }
+                    },
+                );
             };
         }
     }

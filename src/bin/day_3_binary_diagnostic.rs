@@ -9,21 +9,21 @@ struct BitStatistics {
     ones_count: usize,
 }
 
-fn bit_statistics(lines: &Vec<Vec<char>>, digit_index: usize) -> BitStatistics {
+fn bit_statistics(lines: &[Vec<char>], digit_index: usize) -> BitStatistics {
     let mut ones_count = 0;
     let mut zeros_count = 0;
 
     for line in lines.iter() {
         if line[digit_index] == '1' {
-            ones_count = ones_count + 1;
+            ones_count += 1;
         } else {
-            zeros_count = zeros_count + 1;
+            zeros_count += 1;
         }
     }
 
     BitStatistics {
-        zeros_count: zeros_count,
-        ones_count: ones_count,
+        zeros_count,
+        ones_count,
     }
 }
 
@@ -44,11 +44,11 @@ fn main() {
     for i in (0..diagnostic_length).rev() {
         let stats = bit_statistics(&lines, i);
         if stats.ones_count > stats.zeros_count {
-            gamma_rate = gamma_rate + exp;
+            gamma_rate += exp;
         } else {
-            epsilon_rate = epsilon_rate + exp;
+            epsilon_rate += exp;
         }
-        exp = exp * 2;
+        exp *= 2;
     }
 
     println!("Power consumption: {}", gamma_rate * epsilon_rate);
@@ -94,12 +94,12 @@ fn main() {
     let mut oxygen_generator_rating = 0;
     for digit in (0..diagnostic_length).rev() {
         if oxygen_generator_rating_bin[digit] == '1' {
-            oxygen_generator_rating = oxygen_generator_rating + exp;
+            oxygen_generator_rating += exp;
         }
         if co2_scrubber_rating_bin[digit] == '1' {
-            co2_scrubber_rating = co2_scrubber_rating + exp;
+            co2_scrubber_rating += exp;
         }
-        exp = exp * 2;
+        exp *= 2;
     }
 
     println!(

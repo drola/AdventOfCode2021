@@ -18,7 +18,7 @@ impl FromStr for Move {
 	type Err = ParseMoveError;
 
 	fn from_str(s: &str) -> Result<Self, Self::Err> {
-		let command_and_arg: Vec<&str> = s.split(" ").collect();
+		let command_and_arg: Vec<&str> = s.split(' ').collect();
 		let command = command_and_arg[0];
 		let arg: Result<i64, ParseIntError> = command_and_arg[1].parse();
 		match (command, arg) {

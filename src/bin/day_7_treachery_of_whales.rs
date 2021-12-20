@@ -22,7 +22,7 @@ fn main() {
     let contents = fs::read_to_string(filename).expect("Cannot read file");
     let numbers = contents
         .lines()
-        .nth(0)
+        .next()
         .unwrap()
         .split(',')
         .map(|v| v.parse::<i64>().unwrap());
@@ -35,7 +35,6 @@ fn main() {
         .min()
         .unwrap();
     println!("Minimal cost (part 1): {}", minimal_cost_part_1);
-    
     let minimal_cost_part_2 = (min..max + 1)
         .map(|target| cost_part_2(target, numbers.clone()))
         .min()

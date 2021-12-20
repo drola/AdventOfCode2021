@@ -65,10 +65,10 @@ fn main() {
     let mut step = 0;
     let mut all_flashed = false;
     while !all_flashed {
-        step = step + 1;
+        step += 1;
 
         for &(x, y) in &coordinate_list {
-            octopus_map[y][x] = octopus_map[y][x] + 1;
+            octopus_map[y][x] += 1;
         }
 
         let mut more_flashes = true;
@@ -78,13 +78,12 @@ fn main() {
             for &(x, y) in &coordinate_list {
                 if octopus_map[y][x] == 10 {
                     octopus_map[y][x] = 11;
-                    flash_count = flash_count + 1;
+                    flash_count += 1;
                     more_flashes = true;
 
                     for &(neighbor_x, neighbor_y) in &neighbor_lists[y][x] {
                         if octopus_map[neighbor_y][neighbor_x] < 10 {
-                            octopus_map[neighbor_y][neighbor_x] =
-                                octopus_map[neighbor_y][neighbor_x] + 1;
+                            octopus_map[neighbor_y][neighbor_x] += 1;
                         }
                     }
                 }

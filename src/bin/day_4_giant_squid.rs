@@ -16,7 +16,7 @@ impl BingoBoard {
         BingoBoard {
             board: lines
                 .map(|line| {
-                    line.split(" ")
+                    line.split(' ')
                         .filter(|v| !v.is_empty())
                         .map(|n| n.parse::<u64>().unwrap())
                         .collect::<Vec<u64>>()
@@ -80,7 +80,7 @@ impl BingoBoard {
         for i in 0..5 {
             for j in 0..5 {
                 if !self.marks[i][j] {
-                    sum = sum + self.board[i][j];
+                    sum += self.board[i][j];
                 }
             }
         }

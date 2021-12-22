@@ -68,6 +68,7 @@ fn intersection(i: &[u8]) -> u8 {
     i.iter().cloned().reduce(|l, r| l & r).unwrap()
 }
 
+#[allow(clippy::many_single_char_names)]
 fn resolve(p: Problem) -> u64 {
     let one = first_with_x_segments(&p.test_patterns, 2);
     let seven = first_with_x_segments(&p.test_patterns, 3);
